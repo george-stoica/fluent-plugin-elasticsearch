@@ -531,7 +531,7 @@ EOC
                          {}
                        end
         headers = { 'Content-Type' => @content_type.to_s }.merge(@custom_headers).merge(gzip_headers)
-        ssl_options = { verify: @ssl_verify, ca_file: @ca_file}.merge(@ssl_version_options)
+        ssl_options = { verify: @ssl_verify, ca_file: @ca_file, client_cert: @client_cert, client_key: @client_key }.merge(@ssl_version_options)
 
         transport = Elasticsearch::Transport::Transport::HTTP::Faraday.new(connection_options.merge(
                                                                             options: {
